@@ -31,6 +31,7 @@ public class DataDao
             return jdbcTemplate.queryForObject("select data from Data where userId = ?",
                     new RowMapper<String>()
                     {
+                        @Override
                         public String mapRow(ResultSet rs, int rowNum) throws SQLException
                         {
                             String data = rs.getString("data");
@@ -41,6 +42,7 @@ public class DataDao
         }
         catch (EmptyResultDataAccessException ex)
         {
+            log.error("EmptyResultDataAccessException :{}", ex.getMessage(), ex);
             return null;
         }
     }

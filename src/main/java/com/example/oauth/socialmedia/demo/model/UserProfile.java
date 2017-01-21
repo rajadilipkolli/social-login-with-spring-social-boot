@@ -1,5 +1,7 @@
 package com.example.oauth.socialmedia.demo.model;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,8 +11,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class UserProfile
+public class UserProfile implements Serializable
 {
+
+    private static final long serialVersionUID = 1L;
 
     private final String userId;
 
@@ -23,6 +27,17 @@ public class UserProfile
     private final String email;
 
     private final String username;
+    
+    public UserProfile(String userId,
+            org.springframework.social.connect.UserProfile userprofile)
+    {
+        this.userId = userId;
+        this.name = userprofile.getName();
+        this.firstName = userprofile.getFirstName();
+        this.lastName = userprofile.getLastName();
+        this.email = userprofile.getEmail();
+        this.username = userprofile.getUsername();
+    }
 
     public UserProfile(String userId, String name, String firstName, String lastName,
             String email, String username)
@@ -76,17 +91,6 @@ public class UserProfile
                 name = "UNKNOWN";
             }
         }
-    }
-
-    public UserProfile(String userId,
-            org.springframework.social.connect.UserProfile userprofile)
-    {
-        this.userId = userId;
-        this.name = userprofile.getName();
-        this.firstName = userprofile.getFirstName();
-        this.lastName = userprofile.getLastName();
-        this.email = userprofile.getEmail();
-        this.username = userprofile.getUsername();
     }
 
 }

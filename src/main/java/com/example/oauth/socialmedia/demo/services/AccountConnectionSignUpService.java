@@ -22,6 +22,7 @@ public class AccountConnectionSignUpService implements ConnectionSignUp
 
     private final UsersDao usersDao;
 
+    @Override
     public String execute(Connection<?> connection)
     {
         org.springframework.social.connect.UserProfile profile = connection

@@ -57,7 +57,7 @@ public class SocialControllerUtil
             ResultSet rs = md.getTables(null, null, "%", null);
             while (rs.next())
             {
-                if (rs.getString(4).equalsIgnoreCase("TABLE"))
+                if ("TABLE".equalsIgnoreCase(rs.getString(4)))
                 {
 
                     log.debug("TABLE NAME = " + rs.getString(3) + ", Cat = "
@@ -68,6 +68,7 @@ public class SocialControllerUtil
                     List<String> sl = jdbcTemplate.query("select * from " + tableName,
                             new RowMapper<String>()
                             {
+                                @Override
                                 public String mapRow(ResultSet rs, int rowNum)
                                         throws SQLException
                                 {
@@ -91,7 +92,7 @@ public class SocialControllerUtil
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
+            log.error("SQL Exception :{}", e.getMessage(), e);
         }
     }
 

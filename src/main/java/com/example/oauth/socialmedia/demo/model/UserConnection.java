@@ -1,5 +1,7 @@
 package com.example.oauth.socialmedia.demo.model;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 /**
@@ -7,8 +9,10 @@ import lombok.Data;
  *
  */
 @Data
-public class UserConnection
+public class UserConnection implements Serializable
 {
+
+    private static final long serialVersionUID = 1L;
 
     private final String userId;
 

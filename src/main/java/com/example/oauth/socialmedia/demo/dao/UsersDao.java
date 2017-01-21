@@ -40,6 +40,7 @@ public class UsersDao
         return jdbcTemplate.queryForObject("select * from UserProfile where userId = ?",
                 new RowMapper<UserProfile>()
                 {
+                    @Override
                     public UserProfile mapRow(ResultSet resultSet, int rowNum)
                             throws SQLException
                     {
@@ -60,6 +61,7 @@ public class UsersDao
                 "select * from UserConnection where userId = ?",
                 new RowMapper<UserConnection>()
                 {
+                    @Override
                     public UserConnection mapRow(ResultSet rs, int rowNum)
                             throws SQLException
                     {

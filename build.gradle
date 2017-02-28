@@ -1,9 +1,8 @@
 buildscript {
 	ext {
-		springBootVersion = '1.4.3.RELEASE'
+		springBootVersion = '1.5.1.RELEASE'
 	}
 	repositories {
-		mavenLocal()
 		mavenCentral()
 		maven { url "https://repo.spring.io/snapshot" }
 		maven { url "https://repo.spring.io/milestone" }
@@ -15,8 +14,8 @@ buildscript {
 
 
 plugins {
-    id "org.sonarqube" version "2.2"
-    id "io.spring.dependency-management" version "0.6.1.RELEASE"
+    id "org.sonarqube" version "2.2.1"
+    id "io.spring.dependency-management" version "1.0.0.RELEASE"
     id "com.gorylenko.gradle-git-properties" version "1.4.17"
 } 
 
@@ -34,37 +33,30 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-	mavenLocal()
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
 }
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.boot:spring-boot-starter-security")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-social-facebook')
     compile('org.springframework.boot:spring-boot-starter-social-linkedin')
     compile('org.springframework.boot:spring-boot-starter-social-twitter')
-    compile("org.springframework.social:spring-social-security")
+    compile('org.springframework.social:spring-social-security')
     compile('org.springframework.social:spring-social-github:1.0.0.M4')
-    compile("org.springframework.social:spring-social-google:1.0.0.RELEASE")
-    compile("org.springframework.social:spring-social-live:1.0.1-SNAPSHOT") {
+    compile('org.springframework.social:spring-social-google:1.0.0.RELEASE')
+    compile('com.sachinhandiekar:spring-social-live:1.0.3'){
         exclude group: 'javax.servlet', module: 'servlet-api'
     }
-    compile("org.apache.commons:commons-lang3:3.3.2")
-    compile("com.google.guava:guava:21.0")
-    compile("com.h2database:h2")
-    compile('org.springframework.boot:spring-boot-devtools')
-//  compile("org.hsqldb:hsqldb")
+    compile('org.apache.commons:commons-lang3:3.3.2')
+    compile('com.google.guava:guava:21.0')
+    compile('com.h2database:h2')
+    runtime('org.springframework.boot:spring-boot-devtools')
 	compileOnly('org.projectlombok:lombok')
-
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.3'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

@@ -1,6 +1,5 @@
 package com.example.oauth.socialmedia.demo.services;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,7 +17,7 @@ public class SimpleSocialUsersDetailService implements SocialUserDetailsService
 
     @Override
     public SocialUserDetails loadUserByUserId(String userId)
-            throws UsernameNotFoundException, DataAccessException
+            throws UsernameNotFoundException
     {
         UserDetails userDetails = userDetailsService.loadUserByUsername(userId);
         return new SocialUser(userDetails.getUsername(), userDetails.getPassword(),

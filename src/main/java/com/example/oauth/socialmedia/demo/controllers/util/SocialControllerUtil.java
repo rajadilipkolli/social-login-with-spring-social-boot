@@ -146,7 +146,6 @@ public class SocialControllerUtil
         }
     }
 
-    @SuppressWarnings("unchecked")
     protected void logInfo(HttpServletRequest request, Model model, String userId,
             String path, HttpSession session)
     {
